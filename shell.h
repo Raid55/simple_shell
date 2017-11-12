@@ -12,11 +12,11 @@
 #include <fcntl.h> /*fork system */
 
 /*Main Functions Prototypes*/
-void _shell_init(char **);
+void _shell_loop_init(char **);
 void _shell_instance(char **);
 
 /*Side Functions Prototypes*/
 void exec_process(char *, char **);
-char **tokeniser(char **);
+char **tokeniser(char **, char *);
 
 #endif
