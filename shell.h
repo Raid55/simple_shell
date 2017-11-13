@@ -18,5 +18,7 @@ void _shell_instance(char **);
 /*Side Functions Prototypes*/
 void exec_process(char *, char **);
 char **tokeniser(char **, char *);
+char *find_key(char **, char *);
+char *get_x_path(char **, char *);
 
 #endif

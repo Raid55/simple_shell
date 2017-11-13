@@ -54,48 +54,83 @@ char *get_x_path(char **env_paths, char *program)
 {
 	int i = 1;
 	int pCount = strlen(program);
-}
-void  _get_x_path(char **env_paths, char *program, char **tmp_path)
-{
-        int i = 1;
-        char *tmp;
-        int pCount = strlen(program);
+	int pathCount;
+	char *tmp;
 
-        tmp = malloc(sizeof(char) * (strlen(env_paths[0]) + pCount) + 1);
-        if (tmp == NULL)
-                perror("grosse error alert rouge, segfult!: "), exit(-1);
-        tmp[0] = '\0';
-        strcpy(tmp, env_paths[0]);
-        strcat(tmp, program);
-        tmp[strlen(env_paths[0]) + pCount] = '\0';
-        while (access(tmp, X_OK) == -1 || env_paths[i] != NULL)
-        {
-                tmp = realloc(tmp, sizeof(char) * (strlen(env_paths[i]) + pCount) + 1);
-                if (tmp == NULL)
-                        perror("due gros problem, segbut!!!: "), exit(-1);
-                tmp[0] = '\0';
-                strcpy(tmp, env_paths[i]);
-                strcat(tmp, program);
-                tmp[strlen(env_paths[i] + pCount)] = '\0', i++;
-        }
-        if (env_paths[i] == NULL)
-                free(tmp), *tmp_path = NULL;
-        else
-                *tmp_path = tmp;
+	pathCount = strlen(env_paths[0]);
+	tmp = malloc(sizeof(char) * (strlen(env_paths[0]) + pCount) + 2);
+	if (tmp == NULL)
+		perror("grosse alert la...alert rouge, segfult!: "), exit(-1);
+	
+	tmp = memset(tmp, 0, (pathCount + pCount) + 1);
+	strcpy(tmp, env_paths[0]);
+	strcat(tmp, "/");
+	strcat(tmp, program);
+
+	while (access(tmp, X_OK) == -1 && env_paths[i] != NULL)
+	{
+		pathCount = strlen(env_paths[i]);
+		tmp = realloc(tmp, sizeof(char) * (pathCount + pCount) + 2);
+		if (tmp == NULL)
+			perror("gros gros segfult: "), exit(-1);
+
+		tmp = memset(tmp, 0, (pathCount + pCount) + 1);
+		strcpy(tmp, env_paths[i]);
+		strcat(tmp, "/");
+		strcat(tmp, program);
+		/* printf("[inloop: %s]\n", tmp); */
+		i++;
+	}
+	if (env_paths[i] == NULL)
+	{
+		/* rintf("heyaa"); */
+		return (NULL);
+	}
+	else
+		return (tmp);
 }
+/* void  _get_x_path(char **env_paths, char *program, char **tmp_path) */
+/* { */
+/*         int i = 1; */
+/*         char *tmp; */
+/*         int pCount = strlen(program); */
+
+/*         tmp = malloc(sizeof(char) * (strlen(env_paths[0]) + pCount) + 1); */
+/*         if (tmp == NULL) */
+/*                 perror("grosse error alert rouge, segfult!: "), exit(-1); */
+/*         tmp[0] = '\0'; */
+/*         strcpy(tmp, env_paths[0]); */
+/*         strcat(tmp, program); */
+/*         tmp[strlen(env_paths[0]) + pCount] = '\0'; */
+/*         while (access(tmp, X_OK) == -1 || env_paths[i] != NULL) */
+/*         { */
+/*                 tmp = realloc(tmp, sizeof(char) * (strlen(env_paths[i]) + pCount) + 1); */
+/*                 if (tmp == NULL) */
+/*                         perror("due gros problem, segbut!!!: "), exit(-1); */
+/*                 tmp[0] = '\0'; */
+/*                 strcpy(tmp, env_paths[i]); */
+/*                 strcat(tmp, program); */
+/*                 tmp[strlen(env_paths[i] + pCount)] = '\0', i++; */
+/*         } */
+/*         if (env_paths[i] == NULL) */
+/*                 free(tmp), *tmp_path = NULL; */
+/*         else */
+/*                 *tmp_path = tmp; */
+/* } */
 /**
  *
  *
  */
 char *find_key(char **key_value, char *key)
 {
-        int i = 0;
+    int i = 0;
+	char *tmp;
+    while (strstr(key_value[i], key) == NULL && key_value[i] != NULL)
+        i++;
 
-        while (strstr(key_value[i], key) == NULL && key_value[i] != NULL)
-                i++;
-
-        if (key_value[i] == NULL)
-                return (NULL);
-        else
-                return (strstr(key_value[i], "/"));
+    if (key_value[i] == NULL)
+        return (NULL);
+	
+	tmp = strstr(key_value[i], "="), tmp++;	
+    return (tmp);
 }
