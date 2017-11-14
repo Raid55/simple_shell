@@ -36,21 +36,21 @@ char **tokeniser(char **buff, char *pattern)
  */
 void exec_process(char *program, char **e_args)
 {
-        pid_t cPid;
+    pid_t cPid;
 
-        cPid = fork();
-        if (cPid == -1)
-                perror("twas the night before xmas and fork faild"), exit(-1);
-        /*if child process*/
-        if (cPid == 0)
-                if (execve(program, e_args, NULL) == -1)
-                	perror("Error in running program:"), exit(2);
+    cPid = fork();
+    if (cPid == -1)
+    	perror("twas the night before xmas and fork faild"), exit(EXIT_FAILURE);
+    /*if child process*/
+    if (cPid == 0)
+    	if (execve(program, e_args, NULL) == -1)
+        	perror("Error in running program:"), exit(EXIT_FAILURE);
 }
 /**
  *
  *
  */
-char *get_x_path(char **env_paths, char *program)
+char *_find_x_path(char **env_paths, char *program)
 {
 	int i = 1;
 	int pCount = strlen(program);
@@ -60,7 +60,7 @@ char *get_x_path(char **env_paths, char *program)
 	pathCount = strlen(env_paths[0]);
 	tmp = malloc(sizeof(char) * (strlen(env_paths[0]) + pCount) + 2);
 	if (tmp == NULL)
-		perror("grosse alert la...alert rouge, segfult!: "), exit(-1);
+		perror("grosse alert la...alert rouge, segfult!: "), exit(EXIT_FAILURE);
 	
 	tmp = memset(tmp, 0, (pathCount + pCount) + 1);
 	strcpy(tmp, env_paths[0]);
@@ -72,7 +72,7 @@ char *get_x_path(char **env_paths, char *program)
 		pathCount = strlen(env_paths[i]);
 		tmp = realloc(tmp, sizeof(char) * (pathCount + pCount) + 2);
 		if (tmp == NULL)
-			perror("gros gros segfult: "), exit(-1);
+			perror("gros gros segfult: "), exit(EXIT_FAILURE);
 
 		tmp = memset(tmp, 0, (pathCount + pCount) + 1);
 		strcpy(tmp, env_paths[i]);
@@ -93,10 +93,11 @@ char *get_x_path(char **env_paths, char *program)
  *
  *
  */
-char *find_key(char **key_value, char *key)
+char *_find_key_get_value(char **key_value, char *key)
 {
     int i = 0;
 	char *tmp;
+
     while (strstr(key_value[i], key) == NULL && key_value[i] != NULL)
         i++;
 
@@ -106,3 +107,7 @@ char *find_key(char **key_value, char *key)
 	tmp = strstr(key_value[i], "="), tmp++;	
     return (tmp);
 }
+/* char *strealloc(char *start, char *addon) */
+/* { */
+
+/* } */
