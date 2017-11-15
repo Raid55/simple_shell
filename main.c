@@ -2,12 +2,9 @@
 /**
  *
  */
-int main(int ac, char **av, char **envp)
+int main(void)
 {
-	(void) ac;
-	(void) av;
-
-	_shell_loop_init(envp);
+	_shell_loop_init();
 
 	return(0);
 }
