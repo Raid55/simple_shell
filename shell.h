@@ -10,14 +10,16 @@
 #include <sys/types.h> /*datatypes for syscall returns*/
 #include <sys/stat.h> /*I need a detective to investigate this...STAT*/
 #include <fcntl.h> /*fork system */
+#include <stdarg.h> /*varidiadenenticalistic functions...you know what i mean*/
 
 /*SHELL INSTANCE STAGES*/
-#define _CLEAR_ 0
-#define _SKIP_ 1
-#define _SHELL_END_ 2 
-#define _BUILT_IN_ 3
-#define _PATH_NREADY_ 4
-#define _PATH_READY_ 5
+#define _ERR_ 0 /*there was an error in the shell instance*/
+#define _CLEAR_ 1 /*nothing is currently wrong with the curr instance*/
+#define _SKIP_ 2 /*skip everything and loop the instance*/
+#define _SHELL_END_ 3 /*skip everything, end shell and exit instance*/
+#define _BUILT_IN_ 4 /*arg is a built in so execve is not run in instance*/
+#define _PATH_NREADY_ 5 /*arg is not ready to be executed in instance*/
+#define _PATH_READY_ 6 /*path is now ready to be executed in instance*/
 
 /*Main Functions Prototypes*/
 void _shell_loop_init(char **);
@@ -32,13 +34,16 @@ char *get_path_args(char **, char*);
 char *_find_key_get_value(char **, char *);
 char *_find_x_path(char **, char *);
 unsigned int _is_arg_run_ready(char *arg);
+char *_strclear(char **dest);
+char *_stralloc(char **dest, ...);
+
 /*BUILT-IN FUNCTION AND STRUCT*/
 /*functions*/
 
 /*struct*/
 typedef struct built_ins {
 	char *command;
-	
+	int (*func)(char **);
 } b_ins;
 /*END OF BUILT-IN STUFF*/
 

@@ -40,12 +40,18 @@ void _shell_instance(char **envp)
 	if (stat == _PATH_READY_)
 		exec_process(pPath ? pPath : t_args[0], t_args), wait(NULL);
 	
-	free(buffer);
+	if (buffer != NULL)
+		free(buffer);
 	if (t_args != NULL)
 		free(t_args);
 	if (pPath != NULL)
 		free(pPath);
 }
+/* char *generate_prompt_line(char **envp, char *custom) */
+/* { */
+
+
+/* } */
 
 unsigned int _is_arg_run_ready(char *arg)
 {
