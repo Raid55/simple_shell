@@ -38,7 +38,7 @@ char *_find_key_get_value(char **, char *);
 char *_find_x_path(char **, char *);
 unsigned int _is_arg_run_ready(char *arg);
 char *_strclear(char **dest);
-char *_stralloc(char **dest, ...);
+char *_stralloc(int, ...);
 
 /*BUILT-IN FUNCTION AND STRUCT*/
 int run_built_in(char **);
