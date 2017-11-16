@@ -21,7 +21,7 @@ int _shell_instance()
 	EOFCheck = getline(&buffer, &getLineLen, stdin);
 		
 	if (EOFCheck == -1)
-		stat = _SHELL_END_;
+		stat = _SHELL_END_, write(STDOUT_FILENO, "\n", 1);
 	if (EOFCheck == 1)
 		stat = _SKIP_;
 		

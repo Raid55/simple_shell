@@ -25,20 +25,20 @@ extern char **environ;
 #define _PATH_READY_ 6 /*path is now ready to be executed in instance*/
 
 /*Main Functions Prototypes*/
-void _shell_loop_init();
-int _shell_instance();
+void _shell_loop_init(); /*init shell loop function and error handling*/
+int _shell_instance(); /*an instance of the shell, along with all its vars*/
 
 /*Bundled/Operative Prototypes*/
-void exec_process(char *, char **);
-char **tokeniser(char **, char *);
-char *get_path_args(char*);
+void exec_process(char *, char **); /*executes process in child*/
+char **tokeniser(char **, char *); /*tokenises the world*/
+char *get_path_args(char*); /*bundled to get exec path in a string*/
 
 /*Direct/Mini Prototypes*/
-char *_find_key_get_value(char **, char *);
-char *_find_x_path(char **, char *);
-unsigned int _is_arg_run_ready(char *arg);
-char *_strclear(char **dest);
-char *_stralloc(int, ...);
+char *_find_key_get_value(char **, char *); /*finds key value in env var*/
+char *_find_x_path(char **, char *); /*finds correct exec path for program*/
+unsigned int _is_arg_run_ready(char *arg); /*is argument executable as is*/
+char *_stralloc(int, ...); /*strallocates space for string in variadic styles*/
+int _tokount(char *str, char *delimi); /*counts tokens in str*/
 
 /*BUILT-IN FUNCTION AND STRUCT*/
 int run_built_in(char **);
