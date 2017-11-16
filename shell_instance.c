@@ -2,12 +2,10 @@
 /**
  *
  *
- *stat 0: all clear
- *stat 1: continue loop, skip rest
- *stat 2: end of file
- *stat 3: built-in
- *stat 4: not path ready
- *stat 5: path ready
+ *
+ *
+ *
+ *
  */
 int _shell_instance()
 {

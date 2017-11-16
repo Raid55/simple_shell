@@ -1,4 +1,7 @@
 #include "shell.h"
+
+
+
 /**
  *
  */
@@ -56,63 +59,55 @@ char *_find_x_path(char **env_paths, char *program)
 	int pCount = strlen(program);
 	int pathCount;
 	char *tmp;
-
-	pathCount = strlen(env_paths[0]);
-	tmp = malloc(sizeof(char) * (strlen(env_paths[0]) + pCount) + 2);
-	if (tmp == NULL)
-		perror("grosse alert la...alert rouge, segfult!: "), exit(EXIT_FAILURE);
 	
-	tmp = memset(tmp, 0, (pathCount + pCount) + 2);
-	strcpy(tmp, env_paths[0]);
-	strcat(tmp, "/");
-	strcat(tmp, program);
-
+	tmp = _stralloc(3, env_paths[0], "/", program);
 	while (access(tmp, X_OK) == -1 && env_paths[i] != NULL)
 	{
-		pathCount = strlen(env_paths[i]);
-		tmp = realloc(tmp, sizeof(char) * (pathCount + pCount) + 2);
-		if (tmp == NULL)	
-			perror("gros gros segfult: "), exit(EXIT_FAILURE);
-
-		tmp = memset(tmp, 0, (pathCount + pCount) + 2);
-		strcpy(tmp, env_paths[i]);
-		strcat(tmp, "/");
-		strcat(tmp, program);
-		/* printf("[inloop: %s]\n", tmp); */
+		free (tmp);
+		tmp = _stralloc(3, env_paths[i], "/", program);
+		printf("[inloop: %s]\n", tmp);
 		i++;
 	}
 	if (env_paths[i] == NULL)
-	{
-		/* rintf("heyaa"); */
 		return (NULL);
-	}
 	else
 		return (tmp);
 }
-char *_strealloc(char **dest, ...)
+char *_stralloc(int count, ...)
 {
 	va_list valist;
-	char *tmp;
+	char *tmp_arg;
+	char *tmp_ptr;
+	char *tmp_ret;
 	int sLen;
-	int dLen;
+	int aLen;
 
-	va_start(valist, dest);
-	if (*dest == NULL)
-		return (NULL);
+	va_start(valist, count);
 	
-	tmp = va_arg(valist, char *);
-	while(tmp != NULL)
+	tmp_arg = va_arg(valist, char *), count--;	
+	aLen = strlen(tmp_arg);
+
+	tmp_ret = malloc(sizeof(char) * aLen + 1);
+	if (tmp_ret == NULL)
+		perror("big segfult: "), exit(EXIT_FAILURE);
+
+	strcpy(tmp_ret, tmp_arg);
+	while(count != 0)
 	{
-		dLen = strlen(*dest), sLen = strlen(tmp);
-		*dest = realloc(*dest, sizeof(char) * (dLen + sLen) + 1);
-		if (*dest == NULL)
+		tmp_arg = va_arg(valist, char *), count--;	
+		sLen = strlen(tmp_ret), aLen = strlen(tmp_arg);
+		
+		tmp_ptr = malloc(sizeof(char) * (sLen + aLen) + 1);
+		if (tmp_ptr == NULL)
 			perror("gros gros segfult: "), exit(EXIT_FAILURE);
-		strcat(*dest, tmp);
-		tmp = va_arg(valist, char *);
+		
+		if (tmp_ret != NULL)
+			strcpy(tmp_ptr, tmp_ret), free(tmp_ret);
+		strcat(tmp_ptr, tmp_arg), tmp_ret = tmp_ptr;
 	}
 
 	va_end(valist);
-	return (*dest);
+	return (tmp_ret);
 }
 char *_strclear(char **dest)
 {
@@ -139,7 +134,3 @@ char *_find_key_get_value(char **key_value, char *key)
 	tmp = strstr(key_value[i], "="), tmp++;	
     return (tmp);
 }
-/* char *strealloc(char *start, char *addon) */
-/* { */
-
-/* } */
