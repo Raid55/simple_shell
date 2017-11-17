@@ -127,28 +127,21 @@ char *_stralloc(int count, ...)
 	va_end(valist);
 	return (tmp_ret);
 }
-char *_strclear(char **dest)
-{
-	if (*dest == NULL)
-		return (NULL);
-	memset(*dest, 0, (strlen(*dest)));
-	return (*dest);
-}
 /**
  *
  *
  */
-char *_find_key_get_value(char **key_value, char *key)
+char *_find_env_get_value(char *key)
 {
     int i = 0;
 	char *tmp;
 
-    while (strstr(key_value[i], key) == NULL && key_value[i] != NULL)
+    while (strstr(environ[i], key) == NULL && environ[i] != NULL)
         i++;
 
-    if (key_value[i] == NULL)
+    if (environ[i] == NULL)
         return (NULL);
 	
-	tmp = strstr(key_value[i], "="), tmp++;	
+	tmp = strstr(environ[i], "="), tmp++;	
     return (tmp);
 }
