@@ -60,6 +60,7 @@ void exec_process(char *program, char **e_args)
     pid_t cPid;
 
     cPid = fork();
+	printf("p[%s]na[%s]\n", program, e_args[1]);
     if (cPid == -1)
     	perror("twas the night before xmas and fork faild"), exit(EXIT_FAILURE);
     /*if child process*/

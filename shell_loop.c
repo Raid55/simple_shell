@@ -35,7 +35,7 @@ void _shell_loop_init()
 	wait(&waitStat);
 	stat = WEXITSTATUS(waitStat);
 	if (stat)	
-		 _shell_loop_init();
+		_shell_loop_init();
 	else
 		return;
 }
