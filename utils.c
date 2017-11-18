@@ -1,35 +1,53 @@
 #include "shell.h"
-
-
-
 /**
  *
+ *
+ *
+ *
+ *
+ *
  */
+int _tokount(char *str, char *delim)
+{
+	int i = 0, j = 0;
+	int c = 0;
+
+	while (delim[i])
+	{
+		while (str[j])
+			if (str[j++] == delim[i] && str[j] != delim[i])
+				c++; /*haha c ++, get it...what a joke*/
+		j = 0;
+		i++;
+	}
+	return (c);
+}
 char **tokeniser(char **buff, char *pattern)
 {
 	int i;
     char *tok;
 	char **_argv;
-
-    tok = strtok(*buff, pattern);
+	char **tmp;
+	int cTok;
+	
+	cTok = _tokount(*buff, pattern);
+	
+	tok = strtok(*buff, pattern);
     if (tok == NULL)
     	perror("no command passed: "), exit(0);
-	_argv = malloc(sizeof(char *) * 2);
+	
+	_argv = malloc(sizeof(char *) * (cTok + 1));
     if (_argv == NULL)
         perror("Error in Allocation: "), exit(2);
-    i = 1, _argv[0] = tok;
-
+    
+	i = 1, _argv[0] = tok;
     while (tok != NULL)
     {
         tok = strtok(NULL, pattern);
         if (tok != NULL)
-        {
-        	_argv = realloc(_argv, sizeof(char *) * (i + 2));
-            if (_argv == NULL)
-            	free(buff), perror("Error in Allocation: "), exit(2);
-            _argv[i++] = tok;
-    	}
+			_argv[i] = tok, i++;
     }
+
     _argv[i] = NULL;
     return(_argv);
 }
@@ -65,7 +83,7 @@ char *_find_x_path(char **env_paths, char *program)
 	{
 		free (tmp);
 		tmp = _stralloc(3, env_paths[i], "/", program);
-		printf("[inloop: %s]\n", tmp);
+		/* printf("[inloop: %s]\n", tmp); */
 		i++;
 	}
 	if (env_paths[i] == NULL)
