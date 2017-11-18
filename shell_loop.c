@@ -32,7 +32,6 @@ void _shell_loop_init()
 				exit(1);
 		}
 	}
-
 	wait(&waitStat);
 	stat = WEXITSTATUS(waitStat);
 	if (stat)	
