@@ -18,7 +18,7 @@ int _shell_instance()
 
 	write(STDOUT_FILENO, welcome, strlen(welcome));
 	EOFCheck = getline(&buffer, &getLineLen, stdin);
-		
+	
 	if (EOFCheck == -1)
 		stat = _SHELL_END_, write(STDOUT_FILENO, "\n", 1);
 	if (EOFCheck == 1)
@@ -26,19 +26,19 @@ int _shell_instance()
 
 	if (stat == _NORMAL_)
 		t_args = tokeniser(&buffer, " \n\t");
-	
+
 	if (stat == _NORMAL_)
 		stat = run_built_in(t_args);
-	
+
 	if (stat == _NORMAL_)
 		stat = _is_arg_run_ready(t_args[0]) ? _PATH_READY_ : _PATH_NREADY_;
-		
+
 	if (stat == _PATH_NREADY_)
 		pPath = get_path_args(t_args[0]), stat = _PATH_READY_;
-	
+
 	if (stat == _PATH_READY_)
 		exec_process(pPath ? pPath : t_args[0], t_args), wait(NULL);
-	
+
 	if(welcome != NULL)
 		free(welcome);
 	if (buffer != NULL)
@@ -47,7 +47,7 @@ int _shell_instance()
 		free(t_args);
 	if (pPath != NULL)
 		free(pPath);
-	
+
 	return (stat);
 }
 char *generate_prompt_line(char *custom)
