@@ -27,9 +27,8 @@ int run_built_in(char **args)
 * @args: argument array
 * Return: _SKIP_ code on success
 */
-int _bin_env(char **args)
+int _bin_env(__attribute__((unused))char **args)
 {
-	(void) args;
 	int i = 0, len;
 
 	while (environ[i] != NULL)
@@ -46,10 +45,8 @@ int _bin_env(char **args)
 * @args: argument array
 * Return: _SHELL_END_ code on success
 */
-int _bin_exit(char **args)
+int _bin_exit(__attribute__((unused))char **args)
 {
-	(void) args;
-
 	return (3);
 }
 /**
