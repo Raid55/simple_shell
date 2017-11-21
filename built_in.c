@@ -36,6 +36,8 @@ int _bin_env(char **args)
 
 int _bin_exit(char **args)
 {
+	(void) args;
+
 	return(3);
 }
 

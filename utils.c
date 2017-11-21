@@ -12,7 +12,6 @@ char **tokeniser(char **buff, char *pattern)
 	int i;
     char *tok;
 	char **_argv;
-	char **tmp;
 	int cTok;
 	
 	cTok = _tokount(*buff, pattern);

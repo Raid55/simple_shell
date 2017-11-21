@@ -97,8 +97,6 @@ char *_find_env_get_value(char *key)
 char *_find_x_path(char **env_paths, char *program)
 {
 	int i = 1;
-	int pCount = strlen(program);
-	int pathCount;
 	char *tmp;
 
 	tmp = _stralloc(3, env_paths[0], "/", program);
