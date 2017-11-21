@@ -1,26 +1,22 @@
-.TH man 1 "20 November 2017" "simple_shell man page"
-
+.TH man 1 "20 November 2017" "0.32" "simple_shell"
 .SH NAME
-
-.B simple_shell
-	- a simple UNIX command line interpreter/
-
+.B ./hsh
+- a simple UNIX command line interpreter.
 .SH SYNOPSIS
 .B ./hsh
-.I [command file [argument...]]
-
+.I $[COMMAND FILE [ARGUMENT...]]
 .SH DESCRIPTION
-The simple_shell displays prompt and interprets commands input by user. 
-
-.SH EXAMPLE 
-
-
+Displays a prompt and waits for the user to type a command. Command line always ends with a new line. The prompt is displayed again each time a command has been executed.The command lines are simple, no semi-columns, no pipes, no redirections or any other advanced features.
+.Pp    
+If an executable cannot be found, prints an error message and displays the prompt again. Handles errors, the “end of file” condition (Ctrl+D), command lines with arguments and the PATH. Implements the exit buit-in, that exits the shell (Usage: exit). Also implements the env built-in, that prints the current environment.
+.SH OPTIONS
+.B 
+does not take any options.
+.SH SEE ALSO
+.I sh(2), bash(2), zsh(2), powershell(1)
 .SH BUGS
-There are no known bugs
-
+No known bugs.
 .SH AUTHORS
 Nick Boutboul
 
 James Heck
-
-

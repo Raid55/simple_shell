@@ -32,18 +32,22 @@
 ```B.SH | Raid55@vagrant:/home/vagrant/simple_shell$```
 
 **ls -l**
-```B.SH | Raid55@vagrant:/home/vagrant/simple_shell$ ls -la```
-```total 68```
-```drwxrwxr-x  3 vagrant vagrant  4096 Nov 21 05:23 .```
-```drwxr-xr-x 11 vagrant vagrant  4096 Nov 21 05:21 ..```
-```drwxrwxr-x  8 vagrant vagrant  4096 Nov 21 05:22 .git```
-```-rw-rw-r--  1 vagrant vagrant   430 Nov 21 02:46 .gitignore```
-```-rw-rw-r--  1 vagrant vagrant  3533 Nov 21 05:21 README.md```
-```...```
+```
+B.SH | Raid55@vagrant:/home/vagrant/simple_shell$ ls -la
+total 68
+drwxrwxr-x  3 vagrant vagrant  4096 Nov 21 05:23 .
+drwxr-xr-x 11 vagrant vagrant  4096 Nov 21 05:21 ..
+drwxrwxr-x  8 vagrant vagrant  4096 Nov 21 05:22 .git
+-rw-rw-r--  1 vagrant vagrant   430 Nov 21 02:46 .gitignore
+-rw-rw-r--  1 vagrant vagrant  3533 Nov 21 05:21 README.md
+...
+```
  
 **Exit**
-```B.SH | Raid55@vagrant:/home/vagrant/simple_shell$ exit```
-```vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$``` 
+```
+B.SH | Raid55@vagrant:/home/vagrant/simple_shell$ exit
+vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$
+``` 
 
 ### Requirements
 * Allowed editors: ```vi```, ```vim```, ```emacs```
