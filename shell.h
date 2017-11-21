@@ -124,16 +124,6 @@ typedef struct built_ins
 /*END OF BUILT-IN STUFF*/
 
 /*COLOR CODES*/
-<<<<<<< HEAD
-#define _COLOR_RED_       "\e[31m"
-#define _COLOR_GREEN_     "\e[32m"
-#define _COLOR_YELLOW_    "\e[33m"
-#define _COLOR_BLUE_      "\e[34m"
-#define _COLOR_MAGENTA_   "\e[35m"
-#define _COLOR_CYAN_      "\e[36m"
-#define _BOLD_            "\e[1m"
-#define _CLEAR_	          "\e[0m"
-=======
 #define _COLOR_RED_       "\x1B[31m"
 #define _COLOR_GREEN_     "\x1B[32m"
 #define _COLOR_YELLOW_    "\x1B[33m"
@@ -143,5 +133,4 @@ typedef struct built_ins
 #define _BOLD_            "\x1B[1m"
 #define _CLEAR_     	  "\x1B[0m"
 
->>>>>>> 39a0c48da56c3203f267ed25dc8af62477f98a55
 #endif
