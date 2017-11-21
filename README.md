@@ -27,7 +27,10 @@
 | shell.h | header file: contains prototypes, libraries and macros |
 
 ### Examples
+**Prompt**
+* ```B.SH | Raid55@vagrant:/home/vagrant/simple_shell$```
 
+**ls -l**
 * ```B.SH | Raid55@vagrant:/home/vagrant/simple_shell$ ls -la```
 ```total 68```
 ```drwxrwxr-x  3 vagrant vagrant  4096 Nov 21 05:23 .```
@@ -36,6 +39,9 @@
 ```-rw-rw-r--  1 vagrant vagrant   430 Nov 21 02:46 .gitignore```
 ```-rw-rw-r--  1 vagrant vagrant  3533 Nov 21 05:21 README.md```
 ```...``` 
+**Exit**
+* ```B.SH | Raid55@vagrant:/home/vagrant/simple_shell$ exit```
+```vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$``` 
 
 ### Requirements
 * Allowed editors: ```vi```, ```vim```, ```emacs```
