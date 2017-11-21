@@ -22,7 +22,7 @@ int _shell_instance(void)
 
 	if (stat == _NORMAL_)
 		t_args = tokeniser(&buffer, "' '\n\t");
-
+	/* printf("LOLOLO[%s]\n", t_args[0]); */
 	if (stat == _NORMAL_)
 		stat = run_built_in(t_args);
 
