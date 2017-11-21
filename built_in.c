@@ -1,5 +1,9 @@
 #include "shell.h"
-
+/**
+* run_built_in - run built-in function if found
+* @args: argument array
+* Return: shell instance status code
+*/
 int run_built_in(char **args)
 {
 	int i = 0;
@@ -9,16 +13,20 @@ int run_built_in(char **args)
 		{"cd", _bin_cd},
 		{NULL, NULL}
 	};
-	
+
 	while (binsarr[i].command != NULL)
 	{
 		if (strcmp(args[0], binsarr[i].command) == 0)
-			return(binsarr[i].func(args));
+			return (binsarr[i].func(args));
 		i++;
 	}
 	return (1);
 }
-
+/**
+* _bin_env - print environment
+* @args: argument array
+* Return: _SKIP_ code on success
+*/
 int _bin_env(char **args)
 {
 	(void) args;
@@ -33,14 +41,22 @@ int _bin_env(char **args)
 	}
 	return (2);
 }
-
+/**
+* _bin_exit - exit shell
+* @args: argument array
+* Return: _SHELL_END_ code on success
+*/
 int _bin_exit(char **args)
 {
 	(void) args;
 
-	return(3);
+	return (3);
 }
-
+/**
+* _bin_cd - change directory
+* @args: argument array
+* Return: _SKIP_ code on success
+*/
 int _bin_cd(char **args)
 {
 	/* char buff[_SHIA_LA_BEAUF_]; */
@@ -48,7 +64,7 @@ int _bin_cd(char **args)
 	int stat;
 
 	/* printf("[%d]\n", _set_env("OLDPWD", getcwd(buff, _SHIA_LA_BEAUF_))); */
-	
+
 	if (args[1] == NULL)
 		stat = chdir(_find_env_get_value("HOME"));
 	else if (strcmp(args[1], "-") == 0)

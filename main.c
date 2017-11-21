@@ -1,7 +1,8 @@
 #include "shell.h"
 /**
- *
- */
+* main - entry point
+* Return: 0 on success
+*/
 int main(void)
 {
 	unsigned int stat;
@@ -12,5 +13,5 @@ int main(void)
 			stat = 0;
 	} while (stat);
 
-	return(0);
+	return (0);
 }
