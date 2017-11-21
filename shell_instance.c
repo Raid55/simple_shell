@@ -3,7 +3,7 @@
  * _shell_instance - and instance of the shell
  * Return: status code
  */
-int _shell_instance()
+int _shell_instance(void)
 {
 	char *welcome = generate_prompt_line("BIT.SH");
 	char *buffer = NULL, *pPath = NULL;
@@ -14,7 +14,7 @@ int _shell_instance()
 
 	write(STDOUT_FILENO, welcome, strlen(welcome));
 	EOFCheck = getline(&buffer, &getLineLen, stdin);
-	
+
 	if (EOFCheck == -1)
 		stat = _SHELL_END_, write(STDOUT_FILENO, "\n", 1);
 	if (EOFCheck == 1)
