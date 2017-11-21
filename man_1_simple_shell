@@ -1,0 +1,26 @@
+.TH man 1 "20 November 2017" "simple_shell man page"
+
+.SH NAME
+
+.B simple_shell
+	- a simple UNIX command line interpreter/
+
+.SH SYNOPSIS
+.B ./hsh
+.I [command file [argument...]]
+
+.SH DESCRIPTION
+The simple_shell displays prompt and interprets commands input by user. 
+
+.SH EXAMPLE 
+
+
+.SH BUGS
+There are no known bugs
+
+.SH AUTHORS
+Nick Boutboul
+
+James Heck
+
+
