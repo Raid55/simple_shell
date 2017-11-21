@@ -53,6 +53,23 @@ void exec_process(char *program, char **e_args)
         	perror("Error in running program:"), exit(EXIT_FAILURE);
 }
 /**
- *
- *
- */
+int _set_env(char *env_name, char *env_val)
+{
+	int i = 0;
+	char *tmp;
+
+	while (strcmp(environ[i], env_name) == 0)
+		i++;
+	if (environ[i] == NULL)
+		return (0);
+	
+	tmp = _stralloc(3, env_name, "=", env_val);
+	if (tmp == NULL)
+		return (0);
+
+	environ[i] = tmp;
+	printf("tmp[%s]env[%s]\n", tmp, environ[i]);
+	return (1);
+}
+*/
+

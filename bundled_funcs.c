@@ -12,12 +12,12 @@ char *get_path_args(char *program)
 	char **tmp_args;
 
 	tmp = _find_env_get_value("PATH");
-	printf("%s\n", tmp);
+	/* printf("%s\n", tmp); */
 	tmp_env = _stralloc(1, tmp);
 	tmp_args = tokeniser(&tmp_env, ":");
-	printf("[%s]\n", tmp_args[1]);
+	/* printf("[%s]\n", tmp_args[1]); */
 	tmp = _find_x_path(tmp_args, program);
-	printf("tmp[%s]a1[]a2[]\n", tmp);
+	/* printf("tmp[%s]a1[]a2[]\n", tmp); */
 	free(tmp_env);
 	free(tmp_args);
 	return (tmp);
@@ -25,7 +25,7 @@ char *get_path_args(char *program)
 
 char *generate_prompt_line(char *custom)
 {
-	char *buff[1024];
+	char buff[1024];
 
 	if (custom == NULL)
 		custom = "";

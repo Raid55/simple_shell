@@ -41,10 +41,21 @@ int _bin_exit(char **args)
 
 int _bin_cd(char **args)
 {
+	/* char buff[_SHIA_LA_BEAUF_]; */
+	/* char buff2[_SHIA_LA_BEAUF_]; */
+	int stat;
+
+	/* printf("[%d]\n", _set_env("OLDPWD", getcwd(buff, _SHIA_LA_BEAUF_))); */
+	
 	if (args[1] == NULL)
-		perror("BIT.SH: expected argument to \"cd\"\n");
+		stat = chdir(_find_env_get_value("HOME"));
+	else if (strcmp(args[1], "-") == 0)
+		stat = chdir(_find_env_get_value("OLDPWD"));
 	else
-		if (chdir(args[1]) == -1)
-			perror("BIT.SH");
+		stat = chdir(args[1]);
+
+	/* _set_env("PWD", getcwd(buff2, _SHIA_LA_BEAUF_)); */
+	if (stat == -1)
+		perror("cd had an error");
 	return (2);
 }
