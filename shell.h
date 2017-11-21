@@ -15,9 +15,12 @@
 /*System environment*/
 extern char **environ;
 
+/*BUFF SIZE*/
+#define _SHIA_LA_BEAUF_ 1024
+
 /*SHELL INSTANCE STAGES*/
 #define _ERR_         0 /*there was an error in the shell instance*/
-#define _NORMAL_       1 /*nothing is currently wrong with the curr instance*/
+#define _NORMAL_      1 /*nothing is currently wrong with the curr instance*/
 #define _SKIP_        2 /*skip everything and loop the instance*/
 #define _SHELL_END_   3 /*skip everything, end shell and exit instance*/
 #define _BUILT_IN_    4 /*arg is a built in so execve is not run in instance*/
@@ -25,7 +28,6 @@ extern char **environ;
 #define _PATH_READY_  6 /*path is now ready to be executed in instance*/
 
 /*Main Functions Prototypes*/
-void _shell_loop_init(); /*init shell loop function and error handling*/
 int _shell_instance(); /*an instance of the shell, along with all its vars*/
 
 /*Bundled/Operative Prototypes*/
@@ -40,6 +42,7 @@ char *_find_x_path(char **, char *); /*finds correct exec path for program*/
 unsigned int _is_arg_run_ready(char *arg); /*is argument executable as is*/
 char *_stralloc(int, ...); /*strallocates space for string in variadic styles*/
 int _tokount(char *str, char *delimi); /*counts tokens in str*/
+int _set_env(char *, char *); /*sets env variable*/
 
 /*BUILT-IN FUNCTION AND STRUCT*/
 int run_built_in(char **);
