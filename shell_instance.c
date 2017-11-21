@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
-* _shell_instance - instance of a shell
-* Return: status code
-*/
-int _shell_instance(void)
+ * _shell_instance - and instance of the shell
+ * Return: status code
+ */
+int _shell_instance()
 {
 	char *welcome = generate_prompt_line("BIT.SH");
 	char *buffer = NULL, *pPath = NULL;
@@ -14,14 +14,14 @@ int _shell_instance(void)
 
 	write(STDOUT_FILENO, welcome, strlen(welcome));
 	EOFCheck = getline(&buffer, &getLineLen, stdin);
-
+	
 	if (EOFCheck == -1)
 		stat = _SHELL_END_, write(STDOUT_FILENO, "\n", 1);
 	if (EOFCheck == 1)
 		stat = _SKIP_;
 
 	if (stat == _NORMAL_)
-		t_args = tokeniser(&buffer, " \n\t");
+		t_args = tokeniser(&buffer, "' '\n\t");
 
 	if (stat == _NORMAL_)
 		stat = run_built_in(t_args);
@@ -42,3 +42,4 @@ int _shell_instance(void)
 
 	return (stat);
 }
+
