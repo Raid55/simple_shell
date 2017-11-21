@@ -29,7 +29,9 @@
 ### Examples
 
 **Prompt**
-```B.SH | Raid55@vagrant:/home/vagrant/simple_shell$```
+```
+B.SH | Raid55@vagrant:/home/vagrant/simple_shell$
+```
 
 **ls -l**
 ```
