@@ -1,12 +1,21 @@
 ## b.sh
 #### (best shell)
 
+###Description 
+A simple UNIX command interpreter.
+###Examples
 
-### Files
+###Files
 
 |   **Files**   |   **Description**   |
 | -------------- | --------------------- |
-| WIP | WIP |
+| main.c | main shell entry and loop |
+| shell_instance.c | starts shell, recieves and interprets user input|
+| bundled_funcs.c | display custom prompt and get absolute path |
+| utils.c | obtain string tokens and execute files |
+| helpers.c | functions that help obtain a programs path and tokenize strings |
+| built_in.c | checks for and runs builtin functions |
+| shell.h | header file: contains prototypes, libraries and macros |
 
 ### Notes
 Tested on *Ubuntu 14.04 LTS*.  
