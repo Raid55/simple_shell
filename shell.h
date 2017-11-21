@@ -28,36 +28,112 @@ extern char **environ;
 #define _PATH_READY_  6 /*path is now ready to be executed in instance*/
 
 /*Main Functions Prototypes*/
-int _shell_instance(); /*an instance of the shell, along with all its vars*/
+/**
+* _shell_instance - and instance of the shell
+* Return: status code
+*/
+int _shell_instance(void); /* an instance of the shell */
 
 /*Bundled/Operative Prototypes*/
-void exec_process(char *, char **); /*executes process in child*/
-char **tokeniser(char **, char *); /*tokenises the world*/
-char *get_path_args(char*); /*bundled to get exec path in a string*/
-char *generate_prompt_line(char *);
-
+/**
+* exec_process - run program with arguments
+* @program: program string
+* @e_args: program arguments
+* Returns: void
+*/
+void exec_process(char *program, char **e_args); /*executes process in child*/
+/**
+* tokeniser - tokenizes a string
+* @buff: string to tokenize
+* @pattern: delimiter string
+* Return: array of tokens
+*/
+char **tokeniser(char **buff, char *pattern); /*tokenises the world*/
+/**
+* get_path_args - get absolute path for program name
+* @program: program token
+* Return: absolute path
+*/
+char *get_path_args(char *program); /*bundled to get exec path in a string*/
+/**
+* generate_prompt_line - display prompt
+* @custom: custom prompt
+* Return: prompt string in color
+*/
+char *generate_prompt_line(char *custom);
 /*Direct/Mini Prototypes*/
-char *_find_env_get_value(char *); /*finds key value in env var*/
-char *_find_x_path(char **, char *); /*finds correct exec path for program*/
+
+/**
+* _find_env_get_value - get value of key
+* @key: key is key
+* Return: pointer to first letter env value
+*/
+char *_find_env_get_value(char *key); /*finds key value in env var*/
+/**
+* _find_x_path - find path of program
+* @env_paths: path token array
+* @program: program string
+* Return: absolute path of program
+*/
+char *_find_x_path(char **env_paths, char *program);
+/*finds correct exec path for program*/
+/**
+* _is_arg_run_ready - tests for file access
+* @arg: path to check
+* Return: 1 on success, 0 on failure
+*/
 unsigned int _is_arg_run_ready(char *arg); /*is argument executable as is*/
-char *_stralloc(int, ...); /*strallocates space for string in variadic styles*/
-int _tokount(char *str, char *delimi); /*counts tokens in str*/
-int _set_env(char *, char *); /*sets env variable*/
+/**
+* _stralloc - concatenate count strings
+* @count: string count
+* Return: concatenated strings
+*/
+char *_stralloc(int count, ...);
+/*strallocates space for string in variadic styles*/
+/**
+* _tokount - counts number of tokens
+* @str: input string
+* @delim: delimiter string
+* Return: delimiter count
+*/
+int _tokount(char *str, char *delim); /*counts tokens in str*/
 
 /*BUILT-IN FUNCTION AND STRUCT*/
-int run_built_in(char **);
+/**
+* run_built_in - run built-in function if found
+* @args: argument array
+* Return: shell instance status code
+*/
+int run_built_in(char **args);
 /*functions*/
 int _bin_exit(char **);
 int _bin_cd(char **);
 int _bin_env(char **);
 /*struct*/
-typedef struct built_ins {
+/**
+* struct built_ins - command name and function to handle built-ins
+* @command: command name
+* @func: pointer to function
+*
+*/
+typedef struct built_ins
+{
 	char *command;
 	int (*func)(char **);
 } b_ins;
 /*END OF BUILT-IN STUFF*/
 
 /*COLOR CODES*/
+<<<<<<< HEAD
+#define _COLOR_RED_       "\e[31m"
+#define _COLOR_GREEN_     "\e[32m"
+#define _COLOR_YELLOW_    "\e[33m"
+#define _COLOR_BLUE_      "\e[34m"
+#define _COLOR_MAGENTA_   "\e[35m"
+#define _COLOR_CYAN_      "\e[36m"
+#define _BOLD_            "\e[1m"
+#define _CLEAR_	          "\e[0m"
+=======
 #define _COLOR_RED_       "\x1B[31m"
 #define _COLOR_GREEN_     "\x1B[32m"
 #define _COLOR_YELLOW_    "\x1B[33m"
@@ -67,4 +143,5 @@ typedef struct built_ins {
 #define _BOLD_            "\x1B[1m"
 #define _CLEAR_     	  "\x1B[0m"
 
+>>>>>>> 39a0c48da56c3203f267ed25dc8af62477f98a55
 #endif
