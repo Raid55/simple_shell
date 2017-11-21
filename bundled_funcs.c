@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- *
- *
- *
- */
+* get_path_args - get absolute path for program name
+* @program: program token
+* Return: absolute path
+*/
 char *get_path_args(char *program)
 {
 	char *tmp;
@@ -22,7 +22,11 @@ char *get_path_args(char *program)
 	free(tmp_args);
 	return (tmp);
 }
-
+/**
+* generate_prompt_line - display prompt
+* @custom: custom prompt
+* Return: prompt string in color
+*/
 char *generate_prompt_line(char *custom)
 {
 	char buff[1024];
@@ -30,7 +34,7 @@ char *generate_prompt_line(char *custom)
 	if (custom == NULL)
 		custom = "";
 
-	return (_stralloc(21, 
+	return (_stralloc(21,
 				_BOLD_, _COLOR_MAGENTA_, custom, _CLEAR_,
 				" | ",
 				_COLOR_MAGENTA_, "Raid55", _CLEAR_,
