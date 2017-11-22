@@ -13,6 +13,7 @@ int _shell_instance(void)
 	size_t getLineLen = 0;
 
 	write(STDOUT_FILENO, welcome, _strlen(welcome));
+	/* signal(SIGINT, SIG_IGN); */
 	EOFCheck = getline(&buffer, &getLineLen, stdin);
 
 	if (EOFCheck == -1)

@@ -7,10 +7,10 @@
 .I $[COMMAND FILE [ARGUMENT...]]
 .SH DESCRIPTION
 Displays a prompt and waits for the user to type a command. Command line always ends with a new line. The prompt is displayed again each time a command has been executed.The command lines are simple, no semi-columns, no pipes, no redirections or any other advanced features.
-.Pp    
+.Pp
 If an executable cannot be found, prints an error message and displays the prompt again. Handles errors, the “end of file” condition (Ctrl+D), command lines with arguments and the PATH. Implements the exit buit-in, that exits the shell (Usage: exit). Also implements the env built-in, that prints the current environment.
 .SH OPTIONS
-.B 
+.B
 does not take any options.
 .SH SEE ALSO
 .I sh(2), bash(2), zsh(2), powershell(1)
