@@ -6,12 +6,11 @@
 #include <stdlib.h> /*malloc, free, etc...*/
 #include <sys/wait.h> /*wait()*/
 #include <unistd.h> /*system libraries*/
-#include <string.h> /*string manip function*/
 #include <sys/types.h> /*datatypes for syscall returns*/
 #include <sys/stat.h> /*I need a detective to investigate this...STAT*/
 #include <fcntl.h> /*fork system */
 #include <stdarg.h> /*varidiadenenticalistic functions...you know what i mean*/
-
+#include <string.h> /*strtok*/
 /*System environment*/
 extern char **environ;
 
@@ -26,6 +25,13 @@ extern char **environ;
 #define _BUILT_IN_    4 /*arg is a built in so execve is not run in instance*/
 #define _PATH_NREADY_ 5 /*arg is not ready to be executed in instance*/
 #define _PATH_READY_  6 /*path is now ready to be executed in instance*/
+
+/*strings stuff*/
+int _strlen(char *);
+char *_strcpy(char *, char *);
+int _strcmp(char *, char *);
+char *_strstr(char *, char *);
+char *_strcat(char *, char *);
 
 /*Main Functions Prototypes*/
 /**
@@ -109,6 +115,7 @@ int run_built_in(char **args);
 int _bin_exit(char **);
 int _bin_cd(char **);
 int _bin_env(char **);
+
 /*struct*/
 /**
 * struct built_ins - command name and function to handle built-ins

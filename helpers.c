@@ -50,25 +50,25 @@ char *_stralloc(int count, ...)
 	va_start(valist, count);
 
 	tmp_arg = va_arg(valist, char *), count--;
-	aLen = strlen(tmp_arg);
+	aLen = _strlen(tmp_arg);
 
 	tmp_ret = malloc(sizeof(char) * aLen + 1);
 	if (tmp_ret == NULL)
 		perror("big segfult: "), exit(EXIT_FAILURE);
 
-	strcpy(tmp_ret, tmp_arg);
+	_strcpy(tmp_ret, tmp_arg);
 	while (count != 0)
 	{
 		tmp_arg = va_arg(valist, char *), count--;
-		sLen = strlen(tmp_ret), aLen = strlen(tmp_arg);
+		sLen = _strlen(tmp_ret), aLen = _strlen(tmp_arg);
 
 		tmp_ptr = malloc(sizeof(char) * (sLen + aLen) + 1);
 		if (tmp_ptr == NULL)
 			perror("gros gros segfult: "), exit(EXIT_FAILURE);
 
 		if (tmp_ret != NULL)
-			strcpy(tmp_ptr, tmp_ret), free(tmp_ret);
-		strcat(tmp_ptr, tmp_arg), tmp_ret = tmp_ptr;
+			_strcpy(tmp_ptr, tmp_ret), free(tmp_ret);
+		_strcat(tmp_ptr, tmp_arg), tmp_ret = tmp_ptr;
 	}
 
 	va_end(valist);
@@ -84,12 +84,12 @@ char *_find_env_get_value(char *key)
 	int i = 0;
 	char *tmp;
 
-	while (strstr(environ[i], key) == NULL && environ[i] != NULL)
+	while (_strstr(environ[i], key) == NULL && environ[i] != NULL)
 		i++;
 
 	if (environ[i] == NULL)
 		return (NULL);
-	tmp = strstr(environ[i], "="), tmp++;
+	tmp = _strstr(environ[i], "="), tmp++;
 	return (tmp);
 }
 /**

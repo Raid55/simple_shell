@@ -16,7 +16,7 @@ int run_built_in(char **args)
 
 	while (binsarr[i].command != NULL)
 	{
-		if (strcmp(args[0], binsarr[i].command) == 0)
+		if (_strcmp(args[0], binsarr[i].command) == 0)
 			return (binsarr[i].func(args));
 		i++;
 	}
@@ -33,7 +33,7 @@ int _bin_env(__attribute__((unused))char **args)
 
 	while (environ[i] != NULL)
 	{
-		len = strlen(environ[i]);
+		len = _strlen(environ[i]);
 		write(STDOUT_FILENO, environ[i], len);
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
@@ -64,7 +64,7 @@ int _bin_cd(char **args)
 
 	if (args[1] == NULL)
 		stat = chdir(_find_env_get_value("HOME"));
-	else if (strcmp(args[1], "-") == 0)
+	else if (_strcmp(args[1], "-") == 0)
 		stat = chdir(_find_env_get_value("OLDPWD"));
 	else
 		stat = chdir(args[1]);
