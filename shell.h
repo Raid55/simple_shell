@@ -131,6 +131,5 @@ typedef struct built_ins
 #define _COLOR_MAGENTA_   "\x1B[35m"
 #define _COLOR_CYAN_      "\x1B[36m"
 #define _BOLD_            "\x1B[1m"
-#define _CLEAR_     	  "\x1B[0m"
-
+#define _CLEAR_           "\x1B[0m"
 #endif

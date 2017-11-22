@@ -1,7 +1,7 @@
 ## b.sh
 #### (best shell)
 
-### Description 
+### Description
 **A simple UNIX command interpreter.**
 * Displays a prompt and waits for the user to type a command. Command line always ends with a new line.
 * The prompt is displayed again each time a command has been executed.
@@ -44,12 +44,12 @@ drwxrwxr-x  8 vagrant vagrant  4096 Nov 21 05:22 .git
 -rw-rw-r--  1 vagrant vagrant  3533 Nov 21 05:21 README.md
 ...
 ```
- 
+
 **Exit**
 ```
 B.SH | Raid55@vagrant:/home/vagrant/simple_shell$ exit
 vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$
-``` 
+```
 
 ### Requirements
 * Allowed editors: ```vi```, ```vim```, ```emacs```
@@ -94,12 +94,12 @@ vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$
   * ```fflush``` (```man 3 fflush```)
 
 ### Notes
-Tested on *Ubuntu 14.04 LTS*.    
-No known bugs.  
+Tested on *Ubuntu 14.04 LTS*.
+No known bugs.
 
 ### Author
 
-* [**James Heck**](https://github.com/notjamesheck) 
+* [**James Heck**](https://github.com/notjamesheck)
 * [**Raid55 (Nick B.)**](https://github.com/Raid55)
 
 <p align="center">
