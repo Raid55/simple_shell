@@ -5,14 +5,14 @@
  */
 int _shell_instance(void)
 {
-	char *welcome = generate_prompt_line("BIT.SH");
+	/* char *welcome = generate_prompt_line("BIT.SH"); */
 	char *buffer = NULL, *pPath = NULL;
 	char **t_args = NULL;
 	ssize_t EOFCheck;
 	unsigned int stat = 1;
 	size_t getLineLen = 0;
 
-	write(STDOUT_FILENO, welcome, _strlen(welcome));
+	write(STDOUT_FILENO, "$ ", 2);
 	/* signal(SIGINT, SIG_IGN); */
 	EOFCheck = getline(&buffer, &getLineLen, stdin);
 
@@ -32,7 +32,7 @@ int _shell_instance(void)
 	if (stat == _NORMAL_)
 		exec_process(pPath ? pPath : t_args[0], t_args), wait(NULL);
 
-		free(welcome);
+		/* free(welcome); */
 		free(buffer);
 		free(t_args);
 		free(pPath);
