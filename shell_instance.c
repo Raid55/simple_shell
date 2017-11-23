@@ -27,7 +27,7 @@ int _shell_instance(void)
 	if (stat == _NORMAL_)
 		stat = run_built_in(t_args);
 
-	if (stat == _NORMAL_ && t_args[0][0] != '.')
+	if (stat == _NORMAL_ && (t_args[0][0] != '.' && t_args[0][1] != '/'))
 		pPath = get_path_args(t_args[0]);
 	if (stat == _NORMAL_)
 		exec_process(pPath ? pPath : t_args[0], t_args), wait(NULL);
